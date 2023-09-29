@@ -61,7 +61,7 @@ const transfertype_t transfertype = TRANSFER_WIFI;
 typedef enum
 {
     espcommand_empty,
-    espcommand_measure
+    espcommand_start
 } esp_command_t;
 
 // static const uint64_t espcommand_channel = 0x74797380ec3cce13ULL;
@@ -168,7 +168,7 @@ static void espnow_recv_cb(const esp_now_recv_info_t *esp_now_info, const uint8_
         ESP_LogD("ESP-NOW", "Received command %d- entering Switch", data[0]);
         switch ((esp_command_t)data[0])
         {
-        case espcommand_measure:
+        case espcommand_start:
             if (!measure) // start measure
             {
                 ESP_LOGI("ESP-NOW", "Start measurement");
